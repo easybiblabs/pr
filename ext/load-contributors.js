@@ -24,7 +24,7 @@ var queryContributors = (i, header, anchor, count) => {
 
         // handle 1 contributor case without image
         if (!$(contributors).find('.avatar-link').length) {
-            var avatar = $(contributorsBox).find('.facebox-user-list-item img')[0];
+            var avatar = $(contributorsBox).find('.facebox-user-list-item img').clone()[0];
             $(avatar).attr({
                 'height': 20,
                 'width': 20,
