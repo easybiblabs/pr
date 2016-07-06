@@ -19,7 +19,11 @@
             "vendor/jquery.min.js",
             "main.js",
             "page-detect.js"
+            "travis-favicon.js",
         ]
     }
+  ],
+  "web_accessible_resources": [
+    "icons/*"
   ]
 }
