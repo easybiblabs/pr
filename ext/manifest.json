@@ -20,6 +20,7 @@
             "page-detect.js",
             "main.js",
             "blame-pr.js"
+            "load-contributors.js"
         ],
         "css": [
             "blame-pr.css"
