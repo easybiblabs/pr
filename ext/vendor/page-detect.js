@@ -35,11 +35,7 @@ window.pageDetect = (() => {
 
 	const getOwnerAndRepo = () => {
 		const [, ownerName, repoName] = location.pathname.split('/');
-
-		return {
-			ownerName,
-			repoName
-		};
+		return {ownerName, repoName};
 	};
 
 	const isSingleFile = () => {

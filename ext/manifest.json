@@ -18,9 +18,13 @@
         ],
         "js": [
             "vendor/jquery.min.js",
-            "page-detect.js",
-            "main.js",
-            "blame-pr.js"
+            "vendor/page-detect.js",
+            "vendor/gh-injection.js",
+            "travis-favicon.js",
+            "pr-hide-commit-files.js",
+            "load-contributors.js",
+            "blame-pr.js",
+            "main.js"
         ],
         "css": [
             "blame-pr.css"
@@ -31,5 +35,8 @@
     "scripts": [
         "blame-pr-background.js"
     ]
-  }
+  },
+  "web_accessible_resources": [
+    "icons/*"
+  ]
 }
