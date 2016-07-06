@@ -1,7 +1,10 @@
 function blamePR() {
 
+    var SEPERATOR = '||||||~~~~~~~~~~~~~||||||'
+
     function collectMainDiffLines() {
-        var out = {};
+        var documentLines = {};
+        var linesWithoutSection = {};
         var files = document.getElementsByClassName('file');
         for (var i = 0; i < files.length; i++) {
             var file = files[i];
@@ -18,10 +21,17 @@ function blamePR() {
                 if (text[0] !== '-' && text[0] !== '+') {
                     continue;
                 }
-                out[filename + section + text] = line;
+                documentLines[filename + section + text] = line;
+                if (!linesWithoutSection[filename]) {
+                    linesWithoutSection[filename] = [];
+                }
+                linesWithoutSection[filename].push({
+                    text: text,
+                    element: line
+                });
             }
         }
-        return out;
+        return [documentLines, linesWithoutSection];
     }
 
     function getPatchFile(cb) {
@@ -40,7 +50,8 @@ function blamePR() {
 
     function collectPatchInfo(cb) {
         getPatchFile(function(data) {
-            var out = {};
+            var patchInfo = {};
+            var patchInfoWithoutSection = {};
             var parts = data.split(/From [0-9a-f]{40} /);
             for (var i = 0; i < parts.length; i++) {
                 var part = parts[i];
@@ -55,16 +66,16 @@ function blamePR() {
                 var section = '';
                 for (var j = 0; j < lines.length; j++) {
                     var line = lines[j];
-                    if (line.match(/^\+\+\+/)) {
+                    if (line.match(/^---/)) {
                         continue;
                     }
                     var m;
-                    if (m = line.match(/^--- (.*)$/)) {
+                    if (m = line.match(/^\+\+\+ (.*)$/)) {
                         if (!m[1]) {
                             continue;
                         }
                         // m[1] is something like a/frontend/src/myfile.js
-                        filename = m[1].replace(/^a\//, '');
+                        filename = m[1].replace(/^b\//, '');
                         continue;
                     }
                     if (line.match(/^@@ /)) {
@@ -72,26 +83,48 @@ function blamePR() {
                         continue;
                     }
                     if (line[0] === '-' || line[0] === '+') {
-                        out[filename + section + line] = {
-                            message: message 
+                        var info = {
+                            message: message,
+                            filename: filename,
+                            line: line
                         };
+                        patchInfo[filename + section + line] = info;
+                        if (!patchInfoWithoutSection[filename]) {
+                            patchInfoWithoutSection[filename] = [];
+                        }
+                        patchInfoWithoutSection[filename].push(info);
                     }
                 }
             }
 
-            cb(out);
+            cb(patchInfo, patchInfoWithoutSection);
         });
     }
 
     // main
 
-    var documentLines = collectMainDiffLines();
-    collectPatchInfo(function(patchInfo) {
+    var [documentLines, linesWithoutSection] = collectMainDiffLines();
+    collectPatchInfo(function(patchInfo, patchInfoWithoutSection) {
         for (var k in patchInfo) {
             var info = patchInfo[k];
             var line = documentLines[k];
             if (!line) {
-                continue;
+                // not found -> the displayed diff is probably a combination of multiple patches
+                // Ignore the section, and just search the patch for matching lines in this file
+                var matchingLines = linesWithoutSection[info.filename];
+                if (!matchingLines) {
+                    continue;
+                }
+                for (var i = 0; i < matchingLines.length; i++) {
+                    var match = matchingLines[i];
+                    if (match.text === info.line) {
+                        line = match.element;
+                        break;
+                    }
+                }
+                if (!line) {
+                    continue;
+                }
             }
             line.innerHTML += '<aside>' + info.message + '</aside>';
         }
