@@ -19,8 +19,9 @@
             "vendor/jquery.min.js",
             "vendor/page-detect.js",
             "vendor/gh-injection.js",
-            "main.js",
-            "blame-pr.js"
+            "pr-hide-commit-files.js",
+            "blame-pr.js",
+            "main.js"
         ],
         "css": [
             "blame-pr.css"
