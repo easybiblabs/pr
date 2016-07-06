@@ -12,15 +12,27 @@ const hideCommitFiles = function () {
     const toggleStyle = {'padding': '10px', 'margin-top': '-10px'};
     $commitMenu.css('width', '600px');
     $commitLinks.each(function (index) {
-      if (index === 0) {
-        return;
-      }
-
       let isHidden = false;
       let $link = $(this);
 
+      if (index === 0) {
+        let $allCommitsToggle = $('<a class="right" href="#">Hide all files</a>');
+        $allCommitsToggle.css(toggleStyle);
+        $link.find('.select-menu-item-text').prepend($allCommitsToggle);
+
+        // On all commits click delegate to all commits
+        $allCommitsToggle.click(function (e) {
+          e.preventDefault();
+          isHidden = !isHidden;
+          $fileToggle.text(isHidden ? 'Show all files' : 'Hide all files');
+          $commitLinks.find('[data-visibility-status="' + (isHidden ? 'show' : 'hide') + '"]').trigger('click');
+
+          return false;
+        });
+      }
+
       let $commitCode = $link.find('.select-menu-item-text code');
-      let $fileToggle = $('<a class="right" href="#">Hide files</a>');
+      let $fileToggle = $('<a class="right test" href="#" data-visibility-status="show">Hide files</a>');
       $fileToggle.css(toggleStyle);
       $fileToggle.insertBefore($commitCode);
       $fileToggle.hover(() => $fileToggle.css(toggleHoverStyle), () => $fileToggle.css(toggleResetStyle));
@@ -50,6 +62,7 @@ const hideCommitFiles = function () {
           e.preventDefault();
           isHidden = !isHidden;
           $fileToggle.text(isHidden ? 'Show files' : 'Hide files');
+          $fileToggle.attr('data-visibility-status', isHidden ? 'hide' : 'show');
           files.forEach(function (file) {
             if (isHidden) {
               $('[data-path="' + file + '"]').parent().hide();
