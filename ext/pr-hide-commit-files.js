@@ -1,5 +1,4 @@
-if (pageDetect.isPRFiles()) {
-  $(document).ready(function () {
+const hideCommitFiles = function () {
     let $commitMenu = $('.diffbar-range-menu .select-menu-modal');
     let $commitLinks = $commitMenu.find('a[role=menuitem]');
     // disable this if only 1 commit link + all changes link
@@ -41,9 +40,9 @@ if (pageDetect.isPRFiles()) {
 
         // collect all files which are part of that commit
         let files = [];
-        let $filesChanged = $singleCommitBody.find('.diffbar-item.toc-select .select-menu-list a');
+        let $filesChanged = $singleCommitBody.find('#files .file-header');
         $filesChanged.each(function () {
-          files.push($(this).find('.description').text().trim());
+          files.push($(this).attr('data-path'));
         });
 
         // Click on show/hide files toggle
@@ -63,5 +62,4 @@ if (pageDetect.isPRFiles()) {
         })
       });
     });
-  });
-}
+};

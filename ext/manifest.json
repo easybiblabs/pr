@@ -18,8 +18,8 @@
         "js": [
             "vendor/jquery.min.js",
             "page-detect.js",
-            "main.js",
-            "pr-hide-commit-files.js"
+            "pr-hide-commit-files.js",
+            "main.js"
         ]
     }
   ]

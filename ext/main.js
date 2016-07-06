@@ -23,7 +23,7 @@ var loadContributors = () => {
             });
         });
     });
-}
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     if (pageDetect.isRepo()) {
@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (pageDetect.isPRFiles()) {
             loadContributors();
+            hideCommitFiles();
         }
     }
 });
