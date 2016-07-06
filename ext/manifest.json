@@ -19,7 +19,7 @@
             "vendor/jquery.min.js",
             "page-detect.js",
             "main.js",
-            "blame-pr.js"
+            "blame-pr.js",
             "load-contributors.js"
         ],
         "css": [
