@@ -52,7 +52,7 @@ function blamePR() {
         });
         port.postMessage({
           command: 'get-patch-file',
-          url: document.location.href.replace(/\/files$/, '.patch')
+          url: document.location.href.replace(/\/files.*/, '.patch')
         })
     }
 
