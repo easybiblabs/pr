@@ -20,6 +20,9 @@
             "page-detect.js",
             "main.js",
             "blame-pr.js"
+        ],
+        "css": [
+            "blame-pr.css"
         ]
     }
   ]

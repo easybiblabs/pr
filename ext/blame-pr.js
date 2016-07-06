@@ -34,7 +34,6 @@ function blamePR() {
         getPatchFile(function(data) {
             var out = {};
             var parts = data.split(/From [0-9a-f]{40} /);
-            console.log("PARTS", parts.length);
             for (var i = 0; i < parts.length; i++) {
                 var part = parts[i];
                 var message = part.match(/Subject: \[[^\]]+\] (.*)/);
