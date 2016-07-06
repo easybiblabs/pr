@@ -18,6 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 loadContributors();
                 hideCommitFiles();
             }
+            if(pageDetect.isPR()) {
+              loadTravisFavicon();
+            }
         });
     }
 });

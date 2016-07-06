@@ -1,19 +1,32 @@
-.blob-code aside {
-    display: block;
-    visibility: hidden;
-    position: fixed;
-    top: 10px;
-    width: 500px;
-    left: calc(50% - 250px);
+.blob-code .blame-pr {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
     z-index: 99999999999999;
-    background: #fff;
-    padding: 10px;
+    background: white;
+    text-align: center;
+    overflow: hidden;
     border: 1px solid #ddd;
-    border-radius: 3px;
-    box-shadow: 2px 10px 10px #777;
+    border-radius: 1px;
 }
 
-.blob-code:hover aside {
-    visibility: visible;
-    opacity: 1;;
+.blob-code:hover .blame-pr {
+    display: block;
+}
+
+.blame-pr-content {
+    display: none;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.blame-pr:hover + .blame-pr-content {
+    display: block;
 }

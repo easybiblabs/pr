@@ -1,5 +1,15 @@
 function blamePR() {
 
+
+    function escapeHtml(text) {
+      return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+    }
+
     function collectMainDiffLines() {
         var documentLines = {};
         var linesWithoutSection = {};
@@ -128,10 +138,11 @@ function blamePR() {
                     continue;
                 }
             }
-            line.innerHTML += '<aside>' +
-                info.author + '<br>' +
-                info.filename + '<br>' +
-                '<strong>' + info.message + '</strong>' +
+            line.innerHTML += '<aside class="blame-pr">i</aside>' +
+                '<aside class="blame-pr-content">' + 
+                escapeHtml(info.author) + '<br>' +
+                escapeHtml(info.filename) + '<br>' +
+                '<strong>' + escapeHtml(info.message) + '</strong>' +
                 '</aside>';
         }
     });
