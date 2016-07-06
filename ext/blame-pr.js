@@ -1,7 +1,5 @@
 function blamePR() {
 
-    var SEPERATOR = '||||||~~~~~~~~~~~~~||||||'
-
     function collectMainDiffLines() {
         var documentLines = {};
         var linesWithoutSection = {};
