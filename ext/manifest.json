@@ -19,6 +19,7 @@
             "vendor/jquery.min.js",
             "vendor/page-detect.js",
             "vendor/gh-injection.js",
+            "travis-favicon.js",
             "pr-hide-commit-files.js",
             "load-contributors.js",
             "blame-pr.js",
@@ -28,5 +29,8 @@
             "blame-pr.css"
         ]
     }
+  ],
+  "web_accessible_resources": [
+    "icons/*"
   ]
 }
