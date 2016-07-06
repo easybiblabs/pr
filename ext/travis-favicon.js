@@ -21,15 +21,19 @@ const loadTravisFavicon = function () {
   }
 
   var setPRFavicon = function() {
-    var newIcon = icons.broken
+    var newIcon = icons.regular
 
     if (isMerged()) {
       clearInterval(stateInterval)
       newIcon = icons.regular
     }
 
-    if (isMergeable() && !hasFailedChecks()) {
+    if (isMergeable()) {
       newIcon = icons.mergeable
+    }
+
+    if(hasFailedChecks()) {
+      newIcon = icons.broken
     }
 
     var icon = document.querySelectorAll('link[rel="icon"]')[0]
