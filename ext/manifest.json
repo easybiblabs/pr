@@ -19,7 +19,11 @@
             "vendor/jquery.min.js",
             "page-detect.js",
             "pr-hide-commit-files.js",
-            "main.js"
+            "main.js",
+            "blame-pr.js"
+        ],
+        "css": [
+            "blame-pr.css"
         ]
     }
   ]
