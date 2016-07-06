@@ -8,7 +8,19 @@ A browser extension to add some things to Github.
 * change the color of the page's favicon depending on the PR build status
 * ignore the changes of selected commits in the diff view
 
-# License
+## Setup
+
+Currently (this will change):
+
+* go to https://github.com/settings/tokens
+* create a new token, copy it
+* open the console, do `localStorage.setItem('GH_TOKEN', 'copy-your-token-here');`
+* in Chrome/Chromium, go to chrome://extensions/
+* check "Developer mode"
+* click "Load unpacked extension..."
+* select the `ext/` directory here
+
+## License
 
 Everything, except for things in `ext/vendor`:
 
