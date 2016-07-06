@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pageDetect.isPRFiles()) {
             blamePR();
             loadContributors();
+            hideCommitFiles();
         }
     }
 });
