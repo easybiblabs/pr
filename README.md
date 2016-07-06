@@ -2,6 +2,12 @@
 
 A browser extension to add some things to Github.
 
+* show contributors to the files changed in a PR
+* show commit messages for the respective changes in a PR
+* show the full Travis CI matrix, instead of just the PR's build status
+* change the color of the page's favicon depending on the PR build status
+* ignore the changes of selected commits in the diff view
+
 # License
 
 Everything, except for things in `ext/vendor`:
@@ -20,7 +26,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Other then that:
+Other than that:
 
 - `ext/vendor/page-detect.js` supplied under MIT license © Sindre Sorhus
    https://github.com/sindresorhus/refined-github
