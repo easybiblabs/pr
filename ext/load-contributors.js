@@ -11,6 +11,19 @@ window.loadContributors = () => {
                     $(contributors).find('.contributors-toggle').contents()[0].textContent = 'File has ';
                     $(contributors).find('.contributors-toggle').attr('data-facebox', '#blob_contributors_box_'+i);
 
+                    // handle 1 contributor case without image
+                    if (!$(contributors).find('.avatar-link').length) {
+                        var avatar = $(contributorsBox).find('.facebox-user-list-item img')[0];
+                        $(avatar).attr({
+                            'height': 20,
+                            'width': 20,
+                            'class': 'avatar',
+                            'src': $(avatar).attr('src').replace('s=48', 's=40'),
+                        });
+                        var contributor = $('<a class="avatar-link tooltipped tooltipped-s"></a>').append(avatar);
+                        $(contributors).append(contributor);
+                    }
+
                     var bar = $('<div class="file-header contributor-bar"></div>')
                         .append($(contributors)[0])
                         .append($(contributorsBox)[0]);
