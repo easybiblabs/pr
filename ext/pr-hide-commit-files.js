@@ -30,7 +30,7 @@ const hideCommitFiles = function () {
         $allCommitsToggle.click(function (e) {
           e.preventDefault();
           isHidden = !isHidden;
-          $fileToggle.text(isHidden ? 'Show all files' : 'Hide all files');
+          $allCommitsToggle.text(isHidden ? 'Show all files' : 'Hide all files');
           $commitLinks.find('[data-visibility-status="' + (isHidden ? 'show' : 'hide') + '"]').trigger('click');
 
           return false;
