@@ -9,3 +9,16 @@ $.get('https://api.github.com/issues', { access_token: GH_TOKEN })
     .done(function(data) {
         console.log(data);
     });
+
+document.addEventListener('DOMContentLoaded', () => {
+	if (pageDetect.isRepo()) {
+        if (pageDetect.isPR()) {
+            //
+        }
+
+        if (pageDetect.isPRFiles()) {
+            //
+        }
+	}
+});
+
