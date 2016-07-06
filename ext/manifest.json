@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+
+  "name": "Getting started example",
+  "description": "This extension shows a Google Image search result for the current page",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "https://github.com/*"
+  ],
+  "content_scripts": [
+    {
+        "run_at": "document_start",
+        "matches": [
+            "https://github.com/*",
+            "https://gist.github.com/*"
+        ],
+        "js": [
+            "main.js"
+        ]
+    }
+  ]
+}
