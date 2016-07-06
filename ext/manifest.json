@@ -6,7 +6,8 @@
   "version": "1.0",
   "permissions": [
     "storage",
-    "https://github.com/*"
+    "https://github.com/*",
+    "https://patch-diff.githubusercontent.com/*"
   ],
   "content_scripts": [
     {
@@ -25,5 +26,10 @@
             "blame-pr.css"
         ]
     }
-  ]
+  ],
+  "background": {
+    "scripts": [
+        "blame-pr-background.js"
+    ]
+  }
 }
