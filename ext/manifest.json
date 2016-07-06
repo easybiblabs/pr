@@ -17,11 +17,12 @@
         ],
         "js": [
             "vendor/jquery.min.js",
-            "page-detect.js",
+            "vendor/page-detect.js",
+            "vendor/gh-injection.js",
             "pr-hide-commit-files.js",
-            "main.js",
+            "load-contributors.js",
             "blame-pr.js",
-            "load-contributors.js"
+            "main.js"
         ],
         "css": [
             "blame-pr.css"
