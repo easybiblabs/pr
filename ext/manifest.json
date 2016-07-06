@@ -16,6 +16,7 @@
             "https://gist.github.com/*"
         ],
         "js": [
+            "vendor/jquery.min.js",
             "main.js"
         ]
     }
