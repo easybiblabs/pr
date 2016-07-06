@@ -6,11 +6,11 @@
     display: block;
     position: absolute;
     top: -50px;
-    left: 0px;
+    right: 0px;
     z-index: 99999999999999;
-    background: white;
+    background: #fff;
     padding: 10px;
-    border: 1px solid gray;
-    border-radius: 2px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
     box-shadow: 10px 10px 10px rgba(10, 10, 10, 0.1);
 }

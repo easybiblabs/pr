@@ -60,6 +60,9 @@ function blamePR() {
                     continue;
                 }
                 message = message[1];
+                var ref = 'LALALALTODO'; /// XXX currently in split
+                var author = part.match(/From: (.*)/)[1];
+                var date = part.match(/Date: (.*)/)[1];
 
                 var lines = part.split("\n");
                 var filename = '';
@@ -84,6 +87,9 @@ function blamePR() {
                     }
                     if (line[0] === '-' || line[0] === '+') {
                         var info = {
+                            ref: ref,
+                            author: author,
+                            date: date,
                             message: message,
                             filename: filename,
                             line: line
@@ -126,7 +132,12 @@ function blamePR() {
                     continue;
                 }
             }
-            line.innerHTML += '<aside>' + info.message + '</aside>';
+            line.innerHTML += '<aside>' +
+                'commit: ' + info.ref + '<br>' +
+                'Author: ' + info.author + '<br>' +
+                'Date: ' + info.date + '<br><br>' +
+                '&nbsp;&nbsp;&nbsp;&nbsp;' + info.message +
+                '</aside>';
         }
     });
 }
