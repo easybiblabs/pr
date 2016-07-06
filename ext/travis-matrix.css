@@ -1,0 +1,19 @@
+.travis-matrix {
+  width: 100%;
+}
+
+.travis-matrix td {
+  padding: 5px;
+}
+
+.travis-passed {
+  background-color: #2ECC40;
+}
+
+.travis-failed {
+  background-color: #FF4136;
+}
+
+.travis-created, .travis-started {
+  background-color: #FFDC00;
+}
