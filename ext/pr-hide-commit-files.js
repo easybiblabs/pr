@@ -1,4 +1,10 @@
+let hideCommitFilesLoaded = false;
 const hideCommitFiles = function () {
+    if (hideCommitFilesLoaded) {
+      return;
+    }
+    hideCommitFilesLoaded = true;
+
     let $commitMenu = $('.diffbar-range-menu .select-menu-modal');
     let $commitLinks = $commitMenu.find('a[role=menuitem]');
     // disable this if only 1 commit link + all changes link
