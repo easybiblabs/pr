@@ -17,7 +17,8 @@
         ],
         "js": [
             "vendor/jquery.min.js",
-            "page-detect.js",
+            "vendor/page-detect.js",
+            "vendor/gh-injection.js",
             "main.js",
             "blame-pr.js"
         ],

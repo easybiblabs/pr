@@ -25,14 +25,12 @@ var loadContributors = () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     if (pageDetect.isRepo()) {
-        if (pageDetect.isPR()) {
-            //
-        }
-
-        if (pageDetect.isPRFiles()) {
-            blamePR();
-            loadContributors();
-        }
+        gitHubInjection(window, () => {
+            if (pageDetect.isPRFiles()) {
+                blamePR();
+                loadContributors();
+            }
+        });
     }
 });
 
