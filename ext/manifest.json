@@ -17,8 +17,8 @@
         ],
         "js": [
             "vendor/jquery.min.js",
-            "main.js",
-            "page-detect.js"
+            "page-detect.js",
+            "main.js"
         ]
     }
   ]
