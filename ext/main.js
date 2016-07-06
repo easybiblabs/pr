@@ -11,7 +11,7 @@ $.get('https://api.github.com/issues', { access_token: GH_TOKEN })
     });
 
 document.addEventListener('DOMContentLoaded', () => {
-	if (pageDetect.isRepo()) {
+    if (pageDetect.isRepo()) {
         if (pageDetect.isPR()) {
             //
         }
@@ -19,6 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (pageDetect.isPRFiles()) {
             //
         }
-	}
+    }
 });
 
