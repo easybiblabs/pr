@@ -10,7 +10,7 @@ if (pageDetect.isPRFiles()) {
 
     const toggleHoverStyle = {'text-decoration': 'underline'};
     const toggleResetStyle = {'text-decoration': 'inherit'};
-    const toggleStyle = {'padding': '10px', 'margin': '-10px -10px 0 0'};
+    const toggleStyle = {'padding': '10px', 'margin-top': '-10px'};
     $commitMenu.css('width', '600px');
     $commitLinks.each(function (index) {
       if (index === 0) {
@@ -22,13 +22,17 @@ if (pageDetect.isPRFiles()) {
 
       let $commitCode = $link.find('.select-menu-item-text code');
       let $fileToggle = $('<a class="right" href="#">Hide files</a>');
-      $fileToggle.css(toggleStyle)
+      $fileToggle.css(toggleStyle);
       $fileToggle.insertBefore($commitCode);
       $fileToggle.hover(() => $fileToggle.css(toggleHoverStyle), () => $fileToggle.css(toggleResetStyle));
 
       const commitUrl = $link.attr('href');
       $.get(commitUrl).then(function (singleCommitBody) {
         let $singleCommitBody = $(singleCommitBody);
+
+        let $commitAuthor = $singleCommitBody.find('.commit-author-section img');
+        $commitAuthor.addClass('right');
+        $commitAuthor.insertBefore($fileToggle);
 
         // display commit diff stats
         let diffStat = $singleCommitBody.find('.diffbar-item.diffstat');
