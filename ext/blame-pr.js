@@ -1,5 +1,15 @@
 function blamePR() {
 
+
+    function escapeHtml(text) {
+      return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+    }
+
     function collectMainDiffLines() {
         var documentLines = {};
         var linesWithoutSection = {};
@@ -130,9 +140,9 @@ function blamePR() {
             }
             line.innerHTML += '<aside class="blame-pr">i</aside>' +
                 '<aside class="blame-pr-content">' + 
-                info.author + '<br>' +
-                info.filename + '<br>' +
-                '<strong>' + info.message + '</strong>' +
+                escapeHtml(info.author) + '<br>' +
+                escapeHtml(info.filename) + '<br>' +
+                '<strong>' + escapeHtml(info.message) + '</strong>' +
                 '</aside>';
         }
     });
