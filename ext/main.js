@@ -1,5 +1,3 @@
-console.log($(document));
-
 var GH_TOKEN = localStorage.getItem('GH_TOKEN');
 if (!GH_TOKEN) {
     alert("do localStorage.setItem('GH_TOKEN', .....token....);");
@@ -17,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (pageDetect.isPRFiles()) {
-            //
+            blamePR();
         }
     }
 });
