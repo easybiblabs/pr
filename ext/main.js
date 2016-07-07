@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if(pageDetect.isPR()) {
               loadTravisFavicon();
+              loadTravisMatrix();
             }
         });
     }
