@@ -46,4 +46,6 @@ Other than that:
    https://github.com/OctoLinker/injection
 - `ext/vendor/jquery.min.js` supplied under MIT license © jQuery Foundation 
    https://jquery.org/license/
+- `ext/icons` supplied under MIT license © Sashless 
+   https://github.com/sashless/github-pull-request-indicator/blob/master/LICENSE
 
